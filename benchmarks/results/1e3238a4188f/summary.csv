@@ -1,0 +1,18 @@
+run_id,dataset_size,workload,access_path,repetitions,mean_ns,median_ns,p90_ns,p95_ns,p99_ns,min_ns,max_ns,stddev_ns,throughput_ops_s,mean_records_examined,notes
+1e3238a4188f,10000,insert_heap_only,HEAP_ONLY,10000,2131.73,1035.61,2192.63,9783.88,9783.88,921.696,9783.88,2725.98,469103,0,random key order; no index; no duplicate check; percentiles are over 1000-insert batches
+1e3238a4188f,10000,insert_index_only,INDEX_ONLY,10000,181.692,149.482,245.057,260.045,260.045,121.196,260.045,51.8192,5.50382e+06,0,random key order; in-memory B+ Tree only; max_keys=64
+1e3238a4188f,10000,insert_full,HEAP_PLUS_INDEX,10000,1700.2,1413.14,2375.66,3678.01,3678.01,1147.57,3678.01,784.183,588166,0,random key order; duplicate probe + heap append + index insert; percentiles are over 1000-insert batches
+1e3238a4188f,10000,index_maintenance_overhead,DERIVED,10000,-431.529,,,,,,,,0,,derived: insert_full mean minus insert_heap_only mean per record (index probe + index insert)
+1e3238a4188f,10000,insert_full_ascending,HEAP_PLUS_INDEX,10000,1657.03,1217.59,3104.81,3387.93,3387.93,1081.69,3387.93,861.392,603490,0,ascending key order into a fresh database; percentiles are over 1000-insert batches
+1e3238a4188f,10000,index_rebuild_on_open,HEAP_SCAN_PLUS_INDEX_BUILD,3,5.39514e+06,5.229e+06,5.8654e+06,5.8654e+06,5.8654e+06,5.09103e+06,5.8654e+06,413052,185.352,10000,close + open: CRC-validate every slot and rebuild the B+ Tree; 3 repetitions
+1e3238a4188f,10000,point_lookup,INDEX_POINT,5,2776,2740,3113,3113,3113,2426,3113,323.251,360231,1,existing key; auto_path=INDEX_POINT
+1e3238a4188f,10000,point_lookup,FULL_SCAN,5,2.67489e+06,2.65401e+06,2.76516e+06,2.76516e+06,2.76516e+06,2.60273e+06,2.76516e+06,63516.1,373.847,10000,existing key; auto_path=INDEX_POINT
+1e3238a4188f,10000,full_scan,FULL_SCAN,5,3.04055e+06,2.85582e+06,3.90247e+06,3.90247e+06,3.90247e+06,2.68392e+06,3.90247e+06,489668,328.888,10000,predicate matches no record; visits all records; expected_examined=10000
+1e3238a4188f,10000,range_0.1pct,INDEX_RANGE,5,11459.8,11343,12578,12578,12578,10776,12578,685.675,87261.6,10,width=10 keys; keys are dense 1..N so matches=width; auto_path=INDEX_RANGE
+1e3238a4188f,10000,range_0.1pct,FULL_SCAN,5,2.85725e+06,2.84978e+06,2.94582e+06,2.94582e+06,2.94582e+06,2.70822e+06,2.94582e+06,97610.7,349.987,10000,width=10 keys; keys are dense 1..N so matches=width; auto_path=INDEX_RANGE
+1e3238a4188f,10000,range_1pct,INDEX_RANGE,5,126964,129307,165322,165322,165322,95516,165322,30798.2,7876.25,100,width=100 keys; keys are dense 1..N so matches=width; auto_path=INDEX_RANGE
+1e3238a4188f,10000,range_1pct,FULL_SCAN,5,2.78794e+06,2.74406e+06,2.93918e+06,2.93918e+06,2.93918e+06,2.63768e+06,2.93918e+06,122981,358.688,10000,width=100 keys; keys are dense 1..N so matches=width; auto_path=INDEX_RANGE
+1e3238a4188f,10000,range_10pct,INDEX_RANGE,3,992412,1.01115e+06,1.01986e+06,1.01986e+06,1.01986e+06,946224,1.01986e+06,40236.2,1007.65,1000,width=1000 keys; keys are dense 1..N so matches=width; auto_path=INDEX_RANGE
+1e3238a4188f,10000,range_10pct,FULL_SCAN,3,2.85792e+06,2.81508e+06,2.96737e+06,2.96737e+06,2.96737e+06,2.7913e+06,2.96737e+06,95530.6,349.905,10000,width=1000 keys; keys are dense 1..N so matches=width; auto_path=INDEX_RANGE
+1e3238a4188f,10000,range_50pct,INDEX_RANGE,3,8.08336e+06,6.75182e+06,1.13806e+07,1.13806e+07,1.13806e+07,6.11761e+06,1.13806e+07,2.87309e+06,123.711,5000,width=5000 keys; keys are dense 1..N so matches=width; auto_path=FULL_SCAN
+1e3238a4188f,10000,range_50pct,FULL_SCAN,3,4.27456e+06,4.26026e+06,4.32041e+06,4.32041e+06,4.32041e+06,4.24301e+06,4.32041e+06,40631.9,233.942,10000,width=5000 keys; keys are dense 1..N so matches=width; auto_path=FULL_SCAN

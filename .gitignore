@@ -1,0 +1,12 @@
+build/
+data/*
+!data/.gitkeep
+frontend/node_modules/
+frontend/dist/
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
+docs/test-results/*.log
+docs/test-results/cpp.json
+docs/test-results/api.xml

@@ -1,0 +1,10 @@
+{
+  "run_id": "run-20261012T201801Z",
+  "started_utc": "2026-10-12T20:18:01Z",
+  "finished_utc": "2026-10-12T20:19:01Z",
+  "dataset_sizes": [10000,100000,1000000],
+  "parameters": {"point_lookup_index_reps": 1000, "scan_reps": 20, "range_index_reps": 20, "heavy_range_reps": 5, "warmup_runs_per_measurement": 3, "btree_max_keys": 64, "seed": 42},
+  "system": {"cpu_model": "Intel(R) Xeon(R) Processor @ 2.80GHz", "logical_cpus": 2, "ram_total_mib": 8029, "os": "Linux 6.18.44-fc-v114 x86_64"},
+  "build": {"version":"1.0.0","build_type":"Release","compiler":"GNU 13.3.0","cxx_flags":"-O3 -DNDEBUG","cxx_standard":201703,"storage_format_version":1,"max_payload_bytes":1048576,"scan_selectivity_threshold":0.25},
+  "methodology": {"key_distribution": "keys are a seeded random permutation of 1..N (unique, dense), inserted in random order", "payload": "deterministic pseudo-random printable text, 16-111 bytes (mean ~64)", "timing_boundary": "steady_clock around QueryEngine::execute_plan with a prepared plan (parse and plan excluded); rows are materialised; inserts timed in batches of 1000 with payload generation excluded", "cache_conditions": "warm OS page cache; caches were not dropped between runs", "warmup": "each measurement runs warmup_runs_per_measurement untimed executions first", "verification": "every query result is checked against the expected row count; heap/index consistency is checked after loading"}
+}

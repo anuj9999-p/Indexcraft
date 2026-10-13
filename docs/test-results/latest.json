@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-10-12T20:23:31.175735+00:00",
+  "suites": [
+    {
+      "name": "C++ engine (B+ Tree, heap file, database, query)",
+      "framework": "GoogleTest",
+      "total": 110,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 2.634965372,
+      "failures": [],
+      "passed": 110
+    },
+    {
+      "name": "FastAPI backend (records, query, index, benchmark, diagnostics)",
+      "framework": "pytest",
+      "total": 71,
+      "passed": 71,
+      "failed": 0,
+      "skipped": 0,
+      "duration_seconds": 15.554007223,
+      "failures": []
+    }
+  ]
+}
